@@ -3,19 +3,6 @@
 NanoSegment-Microscopy is a desktop Python application for particle segmentation and quantitative image analysis in AFM, SEM, and TEM micrographs. The current implementation is provided as a Tkinter/Matplotlib GUI in `script.py` and uses Meta AI's Segment Anything Model (SAM) for automatic mask generation.
 
 The software is intended for research workflows where particles are segmented and then used for advanced statistical analysis.
-## Main Features
-
-- Import JPG, PNG, TIFF, and TIF images.
-- Load up to four images with the same scale bar for side-by-side analysis.
-- Run SAM automatic particle segmentation with `vit_b`, `vit_l`, or `vit_h` checkpoints.
-- Configure the SAM checkpoint path, model type, maximum AI image side, and CPU-oriented fast mode.
-- Select or deselect particles by individual click, rectangular ROI, and circular ROI.
-- Measure particle area, length, width, circularity, eccentricity, and Feret diameter.
-- Convert pixel measurements to physical units through a user-defined `um/px` scale.
-- Estimate scale from a manually selected scale-bar region using OpenCV-based detection.
-- Save selected particle tables as CSV or XLSX files.
-- Save images and analysis figures as PNG/JPEG/TIFF files.
-- Provide analysis tools for basic statistics, histograms, GMM population analysis, DBSCAN clustering, bootstrapping, nearest-neighbor analysis, t-tests, false-color maps, violin/box plots, bivariate plots, bivariate GMM analysis, overlays, and IoU/Bland-Altman evaluation against manual masks.
 
 ## Repository Layout
 
@@ -137,30 +124,6 @@ Typical GUI workflow:
 11. Export tables through `Save Data` or the save controls in each analysis window.
 
 The GUI keeps the standard Matplotlib navigation toolbar available for pan and zoom.
-
-## Command-Line Quick Test
-
-The script also provides a quick SAM test mode for one image:
-
-```bash
-python script.py \
-  --test-image path/to/image.tif \
-  --checkpoint path/to/sam_vit_b_01ec64.pth \
-  --model-type vit_b \
-  --um-per-px 0.01
-```
-
-This loads the image, runs SAM, reports the number of masks, prints area statistics in `um^2`, and lists the first ten mask areas.
-
-On Windows PowerShell:
-
-```powershell
-python script.py `
-  --test-image path\to\image.tif `
-  --checkpoint path\to\sam_vit_b_01ec64.pth `
-  --model-type vit_b `
-  --um-per-px 0.01
-```
 
 ## Outputs
 
