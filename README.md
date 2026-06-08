@@ -4,6 +4,44 @@ NanoSegment-Microscopy is a desktop Python application for particle segmentation
 
 The software is intended for research workflows where particles are segmented and then used for advanced statistical analysis.
 
+<img width="1328" height="531" alt="Graphical Abstract" src="https://github.com/user-attachments/assets/9c4f5434-d8cd-43dc-b0b2-810c02051e1c" />
+
+<img width="1917" height="995" alt="Software image" src="https://github.com/user-attachments/assets/59f8b13d-3f7f-4880-b6e6-63a0bc27b315" />
+
+## Usage
+
+Launch the GUI:
+
+```bash
+python script.py
+```
+
+Typical GUI workflow:
+
+1. Click `IMPORT` and select one to four AFM/SEM/TEM images (`.jpg`, `.jpeg`, `.png`, `.tif`, or `.tiff`).
+2. Set `Checkpoint (.pth)` to the SAM weights file.
+3. Choose the SAM `Model type` (`vit_b`, `vit_l`, or `vit_h`).
+4. Set `Scale (um/px)` manually, or use `autocalibration` and draw a rectangle around the scale bar.
+5. Set `Max side px (AI)`. The default is `1280`; values below `256` are rejected.
+6. Keep `Fast mode (CPU)` enabled for faster CPU runs, or disable it for denser SAM sampling.
+7. Click `RUN AI SEGMENTATION`.
+8. Select particles using click, rectangle ROI, or circle ROI tools.
+9. Review measurements in `DATA STREAM`; use `Show more data` for circularity, eccentricity, and Feret diameter.
+10. Use the different statistical analysis tools to study the segmented particles.
+11. Export tables through `Save Data` or the save controls in each analysis window.
+
+The GUI keeps the standard Matplotlib navigation toolbar available for pan and zoom.
+
+## Outputs
+
+Depending on the active tool, NanoSegment-Microscopy can save:
+
+- Selected particle measurements as CSV or XLSX.
+- Basic statistics, GMM, DBSCAN, nearest-neighbor, t-test, and IoU/Bland-Altman data as CSV or XLSX.
+- Histograms, nearest-neighbor plots, false-color maps, violin/box plots, bivariate plots, and other figures as image files.
+- Imported or composed images as PNG, JPEG, or TIFF.
+
+
 ## Repository Layout
 
 ```text
@@ -18,22 +56,6 @@ NanoSegment-AFM/
 ```
 
 Optional GUI icon files can be placed next to `script.py`. The code falls back to text labels if they are missing. Icon names used by the script include `BASICSTATISTICALPARAMETERS.png`, `GMM.png`, `Bootstrap.png`, `DBSCAN.png`, `Threshold.png`, `Histogram.png`, `NND.png`, `ttest.png`, `Colormap.png`, `Boxplot.png`, `Bivariate.png`, `Bivariate2.png`, `Overlay.png`, and `button_help.ico`.
-
-## Requirements
-
-- Python 3.10 recommended.
-- A desktop environment with Tk support.
-- PyTorch installed for CPU or CUDA, depending on the workstation.
-- The `segment-anything` Python package.
-- A compatible SAM checkpoint file (`.pth`).
-
-On Linux, Tkinter may need to be installed through the system package manager, for example:
-
-```bash
-sudo apt-get install python3-tk
-```
-
-On Windows and macOS, Tkinter is usually included with the standard Python installers.
 
 ## Installation
 
@@ -100,39 +122,6 @@ Common SAM model types supported by the code are:
 | `vit_h` | SAM ViT-H / huge |
 
 The selected `--model-type` or GUI model type must match the checkpoint architecture. Checkpoints are large binary files and should not be committed to Git. The included `.gitignore` excludes `*.pth`, `*.pt`, and related model files.
-
-## Usage
-
-Launch the GUI:
-
-```bash
-python script.py
-```
-
-Typical GUI workflow:
-
-1. Click `IMPORT` and select one to four AFM/SEM/TEM images (`.jpg`, `.jpeg`, `.png`, `.tif`, or `.tiff`).
-2. Set `Checkpoint (.pth)` to the SAM weights file.
-3. Choose the SAM `Model type` (`vit_b`, `vit_l`, or `vit_h`).
-4. Set `Scale (um/px)` manually, or use `autocalibration` and draw a rectangle around the scale bar.
-5. Set `Max side px (AI)`. The default is `1280`; values below `256` are rejected.
-6. Keep `Fast mode (CPU)` enabled for faster CPU runs, or disable it for denser SAM sampling.
-7. Click `RUN AI SEGMENTATION`.
-8. Select particles using click, rectangle ROI, or circle ROI tools.
-9. Review measurements in `DATA STREAM`; use `Show more data` for circularity, eccentricity, and Feret diameter.
-10. Use the different statistical analysis tools to study the segmented particles.
-11. Export tables through `Save Data` or the save controls in each analysis window.
-
-The GUI keeps the standard Matplotlib navigation toolbar available for pan and zoom.
-
-## Outputs
-
-Depending on the active tool, NanoSegment-Microscopy can save:
-
-- Selected particle measurements as CSV or XLSX.
-- Basic statistics, GMM, DBSCAN, nearest-neighbor, t-test, and IoU/Bland-Altman data as CSV or XLSX.
-- Histograms, nearest-neighbor plots, false-color maps, violin/box plots, bivariate plots, and other figures as image files.
-- Imported or composed images as PNG, JPEG, or TIFF.
 
 ## Troubleshooting
 
