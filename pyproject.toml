@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NanoSegment-Microscopy"
+version = "0.1.0"
+description = "Tkinter application for SAM-based particle segmentation and AFM/SEM/TEM advanced statistical image analysis."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "NanoSegment AFM contributors" }
+]
+keywords = ["AFM", "SEM", "TEM", "particle segmentation", "segment anything", "microscopy"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Image Processing"
+]
+dependencies = [
+  "numpy>=1.24",
+  "pillow>=9.5",
+  "matplotlib>=3.7",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+  "openpyxl>=3.1",
+  "opencv-python>=4.8",
+  "scikit-image>=0.21",
+  "torch>=2.1",
+  "torchvision>=0.16",
+  "segment-anything @ git+https://github.com/facebookresearch/segment-anything.git"
+]
+
+[project.urls]
+Homepage = https://github.com/joselorencs
+Repository = https://github.com/joselorencs/NanoSegmentMicroscopy
+
+[tool.setuptools]
+py-modules = ["script"]
