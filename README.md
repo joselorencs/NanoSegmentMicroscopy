@@ -136,7 +136,7 @@ Depending on the active tool, NanoSegment-Microscopy can save:
 
 ## Troubleshooting
 
-### `SAM missing` or `Missing dependencies for SAM`
+### SAM missing or Missing dependencies for SAM
 
 Install PyTorch and Segment Anything:
 
@@ -151,11 +151,11 @@ Then reinstall the project dependencies if needed:
 python -m pip install -r requirements.txt
 ```
 
-### `SAM checkpoint not found`
+### SAM checkpoint not found
 
 Check that the `.pth` file exists and that the GUI checkpoint field points to it. If the file is in the repository root, the default `sam_vit_b_01ec64.pth` name is used automatically when launching from that directory.
 
-### `Model type must be vit_b, vit_l, or vit_h`
+### Model type must be vit_b, vit_l, or vit_h
 
 Use one of the three SAM model types supported by the code. Make sure the model type matches the checkpoint architecture.
 
@@ -163,11 +163,11 @@ Use one of the three SAM model types supported by the code. Make sure the model 
 
 Use `vit_b`, keep `Fast mode (CPU)` enabled, and reduce `Max side px (AI)`. The code resizes the input for SAM when the longest side exceeds the selected maximum.
 
-### `Scale must be a float value in um/px`
+### Scale must be a float value in um/px
 
 Enter a positive decimal value such as `0.01`. If using a scale bar, run `autocalibration`, draw a rectangle around the scale bar, and enter the scale-bar value in nanometers when prompted.
 
-### `OpenCV is required`
+### OpenCV is required
 
 Autocalibration and some image-processing functions require OpenCV:
 
@@ -175,7 +175,7 @@ Autocalibration and some image-processing functions require OpenCV:
 python -m pip install opencv-python
 ```
 
-### `Saving as .xlsx requires openpyxl`
+### Saving as .xlsx requires openpyxl
 
 Install `openpyxl`:
 
